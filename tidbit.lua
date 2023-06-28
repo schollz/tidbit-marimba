@@ -8,6 +8,7 @@
 MusicUtil = require "musicutil"
 
 -- engine.name = "PolyPerc" -- engine for trying stuff without JF
+engine.name="MarimbaMxSamples" -- https://github.com/schollz/colorwheel-marimba/blob/main/colorwheel-marimba.lua
 
 amtNotes = 5
 
@@ -407,7 +408,9 @@ function strum()
     -- for testing w/ polyperc
     -- engine.amp(math.random(1)*noteAmps[noteSet][note])
     -- engine.hz(midi_to_hz(48+(notes[noteSet][note]/12-1)+tune))
-    
+    if noteAmps[noteSet][note]>0 then
+      engine.play(1,48+(notes[noteSet][note]/12-1)+tune,util.round(noteAmps[noteSet][note]*127))
+    end
     -- for the screen
     -- do something cool with a slider with flickering bits on it
     
